@@ -1,0 +1,48 @@
+{
+  "name": "cost-of-modules",
+  "version": "0.1.0",
+  "description": "Find out which of your dependencies is causing bloat",
+  "author": "siddharthkp",
+  "homepage": "https://github.com/siddharthkp/cost-of-modules#readme",
+  "main": "src/index.js",
+  "bin": "lib/index.js",
+  "scripts": {
+    "build": "babel src -d lib",
+    "lint": "eslint src",
+    "test": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siddharthkp/cost-of-modules.git"
+  },
+  "engines": {
+    "node": ">= 4.4.5"
+  },
+  "keywords": "cost, modules, bloat",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/siddharthkp/cost-of-modules/issues"
+  },
+  "dependencies": {
+    "cli-table2": "0.2.0",
+    "colors": "1.1.2",
+    "sync-exec": "0.6.2"
+  },
+  "devDependencies": {
+    "babel-cli": "6.18.0",
+    "babel-preset-es2015": "6.18.0",
+    "eslint": "3.8.1",
+    "eslint-config-airbnb": "12.0.0",
+    "eslint-plugin-import": "1.16.0",
+    "eslint-plugin-jsx-a11y": "2.2.3",
+    "eslint-plugin-react": "6.4.1"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "xo": {
+    "esnext": true
+  }
+}
