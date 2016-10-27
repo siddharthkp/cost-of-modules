@@ -11,6 +11,9 @@
     "lint": "eslint src",
     "test": "npm run lint"
   },
+  "files": [
+      "lib"
+   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/siddharthkp/cost-of-modules.git"
