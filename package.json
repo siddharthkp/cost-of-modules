@@ -20,7 +20,8 @@
     "url": "git+https://github.com/siddharthkp/cost-of-modules.git"
   },
   "engines": {
-    "node": ">= 4.4.5"
+    "node": ">= 5.0.0",
+    "npm": ">= 3.0.0"
   },
   "keywords": "cost, modules, bloat",
   "license": "MIT",
