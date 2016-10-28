@@ -29,6 +29,8 @@ Run `cost-of-modules` in the directory you are working in.
 
 `--no-install`  Skip installation
 
+`--include-dev`  Include devDependencies as well
+
 #### Show your support
 
 :star: this repo
