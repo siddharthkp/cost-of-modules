@@ -1,5 +1,5 @@
 const test = require('ava');
-const helpers = require('../lib/helpers');
+const helpers = require('../../lib/helpers');
 const testData = require('./fixtures/test-data.js');
 
 let moduleSizes, rootDependencies, flatDependencies, allDependencies;
