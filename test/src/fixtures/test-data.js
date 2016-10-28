@@ -8,8 +8,8 @@ let moduleSizes = {
 };
 
 let flatDependencies = [
-    {name:"date-time",children:["time-zone"]},
-    {name:"once",children:["wrappy"]}
+    {name:'date-time', children:['time-zone']},
+    {name:'once', children:['wrappy']}
 ];
 
 let allDependencies = ['date-time', 'time-zone', 'once', 'wrappy'];

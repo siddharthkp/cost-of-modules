@@ -9,7 +9,7 @@ var moduleSizes = {
     'wrappy': 16
 };
 
-var flatDependencies = [{ name: "date-time", children: ["time-zone"] }, { name: "once", children: ["wrappy"] }];
+var flatDependencies = [{ name: 'date-time', children: ['time-zone'] }, { name: 'once', children: ['wrappy'] }];
 
 var allDependencies = ['date-time', 'time-zone', 'once', 'wrappy'];
 

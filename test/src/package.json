@@ -11,6 +11,6 @@
     "once": "1.4.0"
   },
   "devDependencies": {
-    "mocha": "3.0.2"
+    "yargs-parser": "4.0.2"
   }
 }
