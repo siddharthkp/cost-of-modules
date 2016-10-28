@@ -9,8 +9,8 @@
   "scripts": {
     "build": "babel src -d lib",
     "lint": "eslint src",
-    "test": "npm run lint && npm run build && ava test",
-    "ava": "ava test"
+    "test": "npm run lint && npm run build && ava",
+    "ava": "ava"
   },
   "files": [
     "lib"
