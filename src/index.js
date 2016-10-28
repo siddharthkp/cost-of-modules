@@ -44,9 +44,6 @@ for (let dep of flatDependencies) {
     dep.numberOfChildren = dep.children.length;
 }
 
-/* Sort by size */
-flatDependencies = flatDependencies.sort((a, b) => b.actualSize - a.actualSize);
-
 /*
     All dependencies =
     Root dependencies +  all their children

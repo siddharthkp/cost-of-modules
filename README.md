@@ -20,6 +20,10 @@ Inspired from (npm/npm/issues/10361)[https://github.com/npm/npm/issues/10361]
 
 Run `cost-of-modules` in the directory you are working in.
 
+#### Options
+
+`--less`  Show the biggest 10 modules
+
 #### Show your support
 
 :star: this repo

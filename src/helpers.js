@@ -3,6 +3,7 @@ const syncExec = require('sync-exec');
 const os = require('os');
 const Table = require('cli-table2');
 const {yellow} = require('colors');
+const argv = require('yargs').argv;
 
 let setup = () => {
     console.log();
@@ -131,22 +132,32 @@ let getAllDependencies = (flatDependencies) => {
 };
 
 let displayResults = (flatDependencies, allDependencies, totalSize) => {
+    /* Sort by size */
+    let sortedDependencies = flatDependencies.sort((a, b) => b.actualSize - a.actualSize);
+
     let table = new Table({head: ['name', 'children', 'size']});
 
-    /* Converting to M */
-    for (let dep of flatDependencies) {
+    for (let i = 0; i < sortedDependencies.length; i++) {
+        let dep = sortedDependencies[i];
+
+        /* Showing only top 10 results in less mode */
+        if (argv.less && i === 10) {
+            table.push([`+ ${sortedDependencies.length - 10} modules`, null, null]);
+            break;
+        }
+
         table.push([
             dep.name,
             dep.numberOfChildren,
-            `${(dep.actualSize / 1024).toFixed(2)}M`
+            `${(dep.actualSize / 1024).toFixed(2)}M` // Converting to M
         ]);
     }
 
     /* Total */
     table.push([
-        yellow(`${flatDependencies.length} modules`),
-        yellow(`${allDependencies.length - flatDependencies.length} children`),
-        yellow(`${(totalSize / 1024).toFixed(2)}M`)]);
+        yellow(`${sortedDependencies.length} modules`),
+        yellow(`${allDependencies.length - sortedDependencies.length} children`),
+        yellow(`${(totalSize / 1024).toFixed(2)}M`)]); // Converting to M
 
     /* Print the table with some padding */
     console.log();

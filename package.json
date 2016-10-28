@@ -12,8 +12,8 @@
     "test": "npm run lint"
   },
   "files": [
-      "lib"
-   ],
+    "lib"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/siddharthkp/cost-of-modules.git"
@@ -29,7 +29,8 @@
   "dependencies": {
     "cli-table2": "0.2.0",
     "colors": "1.1.2",
-    "sync-exec": "0.6.2"
+    "sync-exec": "0.6.2",
+    "yargs": "6.3.0"
   },
   "devDependencies": {
     "babel-cli": "6.18.0",
