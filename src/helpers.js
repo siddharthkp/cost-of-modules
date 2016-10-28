@@ -60,10 +60,10 @@ let getRootDependencies = () => {
 */
 let getSizeForNodeModules = () => {
     let modules = {};
-    let command = 'du --max-depth 1 -k node_modules';
+    let command = 'du --max-depth 1 -k --exclude .cache node_modules';
     /* Mac replaces --max-depth with -d */
     let platform = os.platform();
-    if (platform === 'darwin') command = 'du -d 1 -k node_modules';
+    if (platform === 'darwin') command = 'du -d 1 -k -I .cache node_modules';
 
     let result = syncExec(command).stdout;
     /* Bunch of string parsing */
@@ -71,7 +71,7 @@ let getSizeForNodeModules = () => {
     for (let row of rows) {
         let name = row.split('node_modules/')[1];
         let size = parseInt(row.split('node_modules/')[0], 10);
-        modules[name] = size;
+        if (name) modules[name] = size;
     }
     return modules;
 };
