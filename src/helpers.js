@@ -60,7 +60,7 @@ let getRootDependencies = () => {
 */
 let getSizeForNodeModules = () => {
     let modules = {};
-    let command = 'du --max-depth 1 -k -x .cache node_modules';
+    let command = 'du --max-depth 1 -k --exclude .cache node_modules';
     /* Mac replaces --max-depth with -d */
     let platform = os.platform();
     if (platform === 'darwin') command = 'du -d 1 -k -I .cache node_modules';
