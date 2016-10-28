@@ -1,7 +1,7 @@
 const fs = require('fs');
 const syncExec = require('sync-exec');
 const os = require('os');
-const Table = require('cli-table');
+const Table = require('cli-table2');
 const {yellow} = require('colors');
 const argv = require('yargs-parser')(process.argv.slice(2));
 
