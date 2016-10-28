@@ -1,7 +1,8 @@
 const test = require('ava');
-const helpers = require('../src/helpers');
+const helpers = require('../lib/helpers');
 const testData = require('./fixtures/test-data.js');
 
+let moduleSizes, rootDependencies, flatDependencies, allDependencies;
 test.before(t => {
     helpers.setup();
 });
@@ -9,25 +10,22 @@ test.before(t => {
 test.todo('setup was complete');
 
 test('get size for node_modules', t => {
-    let moduleSizes = helpers.getSizeForNodeModules();
+    moduleSizes = helpers.getSizeForNodeModules();
     t.deepEqual(moduleSizes, testData.moduleSizes);
 });
 
 test('get root dependencies', t => {
-    let rootDependencies = helpers.getRootDependencies();
+    rootDependencies = helpers.getRootDependencies();
     t.deepEqual(rootDependencies, testData.rootDependencies);
 });
 
 test('attach nested dependencies', t => {
-    let rootDependencies = helpers.getRootDependencies();
-    let flatDependencies = helpers.attachNestedDependencies(rootDependencies);
+    flatDependencies = helpers.attachNestedDependencies(rootDependencies);
     t.deepEqual(flatDependencies, testData.flatDependencies);
 });
 
 test('get all dependencies', t => {
-    let rootDependencies = helpers.getRootDependencies();
-    let flatDependencies = helpers.attachNestedDependencies(rootDependencies);
-    let allDependencies = helpers.getAllDependencies(flatDependencies);
+    allDependencies = helpers.getAllDependencies(flatDependencies);
     t.deepEqual(allDependencies, testData.allDependencies);
 });
 

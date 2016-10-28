@@ -14,7 +14,6 @@ let setup = () => {
     */
     let packageJSONExists = fs.existsSync('package.json');
     if (!packageJSONExists) {
-        console.log(process.cwd());
         console.log('package.json not found!');
         console.log();
         process.exit();
