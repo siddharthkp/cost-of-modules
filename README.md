@@ -1,4 +1,4 @@
-#### cost-of-modules
+### Cost of modules
 Find out which of your dependencies is causing bloat
 
 [![Build
@@ -8,9 +8,9 @@ Status](https://api.travis-ci.org/siddharthkp/cost-of-modules.svg?branch=master)
 
 With npm 2.x, it was easy to find which of your dependencies is taking a lot of space. You could just look at the size of each directory in `node_modules`
  
-With npm 3 and flat deps this isn't as straightforward.
+With npm 3 and flat deps this isn't as straightforward. This tool makes it easier.
 
-Inspired from (npm/npm/issues/10361)[https://github.com/npm/npm/issues/10361]
+Inspired from [npm/npm/issues/10361](https://github.com/npm/npm/issues/10361)
 
 #### Install
 
