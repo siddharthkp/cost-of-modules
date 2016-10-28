@@ -84,10 +84,12 @@ let getSizeForNodeModules = () => {
 let getDependenciesRecursively = (modules = [], tree) => {
     let deps = Object.keys(tree);
     for (let dep of deps) {
-        if (typeof tree[dep] === 'object' && tree[dep].dependencies !== null) {
-            if (dep !== 'dependencies') modules.push(dep);
-            getDependenciesRecursively(modules, tree[dep]);
-        } else if (tree[dep].version != null) modules.push(dep);
+        if (typeof tree[dep] === 'object' && tree[dep] !== null) {
+            if (tree[dep].dependencies !== null) {
+                if (dep !== 'dependencies') modules.push(dep);
+                getDependenciesRecursively(modules, tree[dep]);
+            } else if (tree[dep].version !== null) modules.push(dep);
+        }
     }
     return modules;
 };
