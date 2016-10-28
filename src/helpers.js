@@ -24,10 +24,16 @@ let setup = () => {
         Ignore devDependencies/bundledDependencies
     */
     console.log('Making sure dependendies are installed');
-    console.log('npm install --production');
-    console.log();
-    syncExec('npm install --production', {stdio: [0, 1, 2]});
 
+    if (argv.yarn) {
+        console.log('yarn install --production');
+        console.log();
+        syncExec('yarn install --production', {stdio: [0, 1, 2]});
+    } else {
+        console.log('npm install --production');
+        console.log();
+        syncExec('npm install --production', {stdio: [0, 1, 2]});
+    }
     console.log();
 };
 
