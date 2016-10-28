@@ -3,7 +3,7 @@ const syncExec = require('sync-exec');
 const os = require('os');
 const Table = require('cli-table');
 const {yellow} = require('colors');
-const argv = require('yargs').argv;
+const argv = require('yargs-parser')(process.argv.slice(2));
 
 let setup = () => {
     console.log();
