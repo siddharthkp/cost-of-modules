@@ -1,6 +1,7 @@
 'use strict';
 
 var test = require('ava');
+var syncExec = require('sync-exec');
 var helpers = require('../../lib/helpers');
 var testData = require('./fixtures/test-data.js');
 
@@ -9,6 +10,7 @@ var moduleSizes = void 0,
     flatDependencies = void 0,
     allDependencies = void 0;
 test.before(function (t) {
+    syncExec('rm -rf node_modules');
     helpers.setup();
 });
 

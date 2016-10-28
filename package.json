@@ -1,6 +1,6 @@
 {
   "name": "cost-of-modules",
-  "version": "0.2.6",
+  "version": "0.3.0",
   "description": "Find out which of your dependencies is causing bloat",
   "author": "siddharthkp",
   "homepage": "https://github.com/siddharthkp/cost-of-modules#readme",
@@ -10,7 +10,7 @@
     "build": "babel src -d lib && babel test/src -d test/lib",
     "lint": "eslint src",
     "test": "npm run lint && npm run build && npm run ava",
-    "ava": "ava test/lib"
+    "ava": "ava test/lib -s"
   },
   "files": [
     "lib"

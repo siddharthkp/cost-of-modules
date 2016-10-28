@@ -5,8 +5,17 @@ const Table = require('cli-table2');
 const {yellow} = require('colors');
 const argv = require('yargs-parser')(process.argv.slice(2));
 
-let setup = () => {
+/*
+    By default, this assumes production mode
+    you can disable that by using --include-dev
+    or by passing includeDev to setup
+*/
+let productionModifier = '--production';
+
+let setup = (includeDev) => {
     console.log();
+
+    if (argv.includeDev || includeDev) productionModifier = '';
 
     /*
         Check if package.json exists
@@ -24,28 +33,27 @@ let setup = () => {
 
     /*
         Make sure dependencies are installed
-        Ignore devDependencies/bundledDependencies
+        Ignore devDependencies/bundledDependencies by default
+        Adds them with --include-dev
     */
     console.log('Making sure dependendies are installed');
 
-    if (argv.yarn) {
-        console.log('yarn install --production');
-        console.log();
-        syncExec('yarn install --production', {stdio: [0, 1, 2]});
-    } else {
-        console.log('npm install --production');
-        console.log();
-        syncExec('npm install --production', {stdio: [0, 1, 2]});
-    }
+    let command = `npm install ${productionModifier}`;
+    if (argv.yarn) command.replace('npm', 'yarn');
+
+    console.log(command);
+    console.log();
+    syncExec(command, {stdio: [0, 1, 2]});
     console.log();
 };
 
 /*
     Get dependency tree with npm -ls
-    Ignore devDependencies/bundledDependencies
+    Ignore devDependencies/bundledDependencies by default
+    Adds them with --include-dev
 */
 let getDependencyTree = () => {
-    let result = syncExec('npm ls --json --production');
+    let result = syncExec(`npm ls --json ${productionModifier}`);
     return JSON.parse(result.stdout).dependencies;
 };
 

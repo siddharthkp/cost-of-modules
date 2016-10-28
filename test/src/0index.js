@@ -1,9 +1,11 @@
 const test = require('ava');
+const syncExec = require('sync-exec');
 const helpers = require('../../lib/helpers');
 const testData = require('./fixtures/test-data.js');
 
 let moduleSizes, rootDependencies, flatDependencies, allDependencies;
 test.before(t => {
+	syncExec('rm -rf node_modules');
     helpers.setup();
 });
 
