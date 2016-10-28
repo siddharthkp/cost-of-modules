@@ -1,0 +1,16 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "main": "diff.test.js",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "description": "This is just for test purposes",
+  "dependencies": {
+    "date-time": "1.1.0",
+    "once": "1.4.0"
+  },
+  "devDependencies": {
+    "mocha": "3.0.2"
+  }
+}

@@ -9,7 +9,8 @@
   "scripts": {
     "build": "babel src -d lib",
     "lint": "eslint src",
-    "test": "npm run lint"
+    "test": "npm run lint && ava test",
+    "ava": "ava test"
   },
   "files": [
     "lib"
@@ -33,6 +34,7 @@
     "yargs": "6.3.0"
   },
   "devDependencies": {
+    "ava": "0.16.0",
     "babel-cli": "6.18.0",
     "babel-preset-es2015": "6.18.0",
     "eslint": "3.8.1",
