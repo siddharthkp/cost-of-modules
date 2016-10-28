@@ -1,6 +1,6 @@
 {
   "name": "cost-of-modules",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Find out which of your dependencies is causing bloat",
   "author": "siddharthkp",
   "homepage": "https://github.com/siddharthkp/cost-of-modules#readme",
@@ -29,6 +29,7 @@
     "url": "https://github.com/siddharthkp/cost-of-modules/issues"
   },
   "dependencies": {
+    "ansi-regex": "2.0.0",
     "cli-table2": "0.2.0",
     "colors": "1.1.2",
     "sync-exec": "0.6.2",

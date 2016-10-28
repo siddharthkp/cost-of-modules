@@ -19,6 +19,9 @@ let setup = () => {
         process.exit();
     }
 
+    /* Do not install dependencies based --no-install flag */
+    if (argv.install != null && !argv.install) return;
+
     /*
         Make sure dependencies are installed
         Ignore devDependencies/bundledDependencies
