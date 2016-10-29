@@ -7,6 +7,28 @@ Status](https://api.travis-ci.org/siddharthkp/cost-of-modules.svg?branch=master)
 
 ![Find out which of your dependencies is causing bloat](https://raw.githubusercontent.com/siddharthkp/cost-of-modules/master/screenshot.jpg)
 
+#### Install
+
+`npm install -g cost-of-modules`
+
+#### Usage
+
+Run `cost-of-modules` in the directory you are working in.
+
+#### Options
+
+`--less`  Show the biggest 10 modules
+
+`--yarn`  Use yarn instead of npm to install dependencies
+
+`--no-install`  Skip installation
+
+`--include-dev`  Include devDependencies as well
+
+#### Show your support
+
+:star: this repo
+
 #### Motivation
 
 I recently published a npm module ([auto-install](https://github.com/siddharthkp/auto-install)) and I wanted to know how much am I making people download before they can use it. Turns out, it was a whopping 30M!
@@ -36,28 +58,6 @@ With npm 2.x, it was easy to find which of your dependencies is taking a lot of 
 With npm 3, the packages are installed in flat manner, so [it isn't so straightforward](https://github.com/npm/npm/issues/10361).
 
 And that was the reason why I created this tool.
-
-#### Install
-
-`npm install -g cost-of-modules`
-
-#### Usage
-
-Run `cost-of-modules` in the directory you are working in.
-
-#### Options
-
-`--less`  Show the biggest 10 modules
-
-`--yarn`  Use yarn instead of npm to install dependencies
-
-`--no-install`  Skip installation
-
-`--include-dev`  Include devDependencies as well
-
-#### Show your support
-
-:star: this repo
 
 #### License
 
