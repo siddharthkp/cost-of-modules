@@ -39,7 +39,7 @@ let setup = (includeDev) => {
     console.log('Making sure dependendies are installed');
 
     let command = `npm install ${productionModifier}`;
-    if (argv.yarn) command.replace('npm', 'yarn');
+    if (argv.yarn) command = command.replace('npm', 'yarn');
 
     console.log(command);
     console.log();
