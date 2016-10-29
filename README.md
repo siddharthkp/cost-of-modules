@@ -31,7 +31,7 @@ Run `cost-of-modules` in the directory you are working in.
 
 #### Motivation
 
-I recently published a npm module ([auto-install](https://github.com/siddharthkp/auto-install)) and I wanted to know how much am I making people download before they can use it. Turns out, it was a whopping 30M!
+I recently published a npm module ([auto-install](https://github.com/siddharthkp/auto-install)) and I wanted to know how many bytes am I making people download before they can use it. Turns out, it was a whopping 30M!
 
 __More than space on disk, I want to optimise for install speed - setup is part of the user experience__
 
@@ -43,9 +43,9 @@ Now, there are 3 things that you can do to make your npm package smaller
 
 2. Only include the files you need by using `files` in your `package.json` or by including a `.npmignore`. [More on that here.](https://docs.npmjs.com/files/package.json#files)
 
-3. Use packages which do the job and takes the least amount of space. E.g. I realised that I did not need `yargs`, I only needed their parser `yargs-parser`
+3. Use packages which do the job and takes the least amount of space. E.g. I realised that I did not need `yargs`, I only needed their parser `yargs-parser` which is much smaller.
 
-4. Bundle all your code together and strip out the functions that you don't use - I still have to try this out.
+Bonus: 4. Bundle all your code together and strip out the functions that you don't use - I still have to try this out. This could be the most impactful one.
 
 -- 
 
