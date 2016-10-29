@@ -45,19 +45,19 @@ Now, there are 3 things that you can do to make your npm package smaller
 
 3. Use packages which do the job and take the least amount of space. For example, I realised that I did not need `yargs`, I only needed their parser `yargs-parser` which is much smaller.
 
-Bonus: 4. Bundle all your code together and strip out the functions that you don't use - I still have to try this out. This could be the most impactful one.
+4. Bonus: Bundle all your code together and strip out the functions that you don't use - I still have to try this out. This could be the most impactful one.
 
 -- 
 
-In my case, the big size was because of #3, the bunch of npm packages that I was using.
+In my case, the big size was because of # 3, the bunch of npm packages that I was using.
 
 __Step 1 - You can't fix what you can't measure__
 
-With npm 2.x, it was easy to find which of your dependencies is taking a lot of space. You could just look at the size of each directory in `node_modules`
+With npm 2.x, it was easy to find how much space is each of your dependencies taking. You could just look at the size of each directory in `node_modules`
 
 With npm 3, the packages are installed in flat manner, so [it isn't so straightforward](https://github.com/npm/npm/issues/10361).
 
-And that was the reason why I created this tool.
+That's the reason why I created this tool.
 
 #### License
 
