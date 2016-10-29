@@ -23,7 +23,7 @@ Run `cost-of-modules` in the directory you are working in.
 
 `--no-install`  Skip installation
 
-`--include-dev`  Include devDependencies as well
+`--include-dev`  Include devDependencies as well - for 🚀 collaborator experience
 
 #### Show your support
 
@@ -39,7 +39,7 @@ __More than space on disk, I want to optimise for install speed - setup is part 
 
 Now, there are 3 things that you can do to make your npm package smaller
 
-1. Make sure all your workflow tools are in `devDependencies` and not in `dependencies` These include your build tools, testing frameworks, etc. Only `dependencies` get installed when someone installs your package.
+1. Make sure all your workflow tools are in `devDependencies` and not in `dependencies` These include your build tools, testing frameworks, etc. Only `dependencies` get installed when someone installs your package. (That being said, for better collaborator experience, you should optimise for both)
 
 2. Only include the files you need by using `files` in your `package.json` or by including a `.npmignore`. [More on that here.](https://docs.npmjs.com/files/package.json#files)
 
@@ -51,7 +51,7 @@ Now, there are 3 things that you can do to make your npm package smaller
 
 In my case, the big size was because of # 3, the bunch of npm packages that I was using.
 
-__Step 1 - You can't fix what you can't measure__
+__You can't fix what you can't measure__
 
 With npm 2.x, it was easy to find how much space is each of your dependencies taking. You could just look at the size of each directory in `node_modules`
 
