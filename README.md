@@ -43,7 +43,7 @@ Now, there are 3 things that you can do to make your npm package smaller
 
 2. Only include the files you need by using `files` in your `package.json` or by including a `.npmignore`. [More on that here.](https://docs.npmjs.com/files/package.json#files)
 
-3. Use packages which do the job and takes the least amount of space. E.g. I realised that I did not need `yargs`, I only needed their parser `yargs-parser` which is much smaller.
+3. Use packages which do the job and take the least amount of space. For example, I realised that I did not need `yargs`, I only needed their parser `yargs-parser` which is much smaller.
 
 Bonus: 4. Bundle all your code together and strip out the functions that you don't use - I still have to try this out. This could be the most impactful one.
 
