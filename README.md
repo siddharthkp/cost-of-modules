@@ -1,5 +1,5 @@
 ### Cost of modules
-Find out which of your dependencies is causing bloat
+Find out which of your dependencies is slowing you down
 
 [![Build
 Status](https://api.travis-ci.org/siddharthkp/cost-of-modules.svg?branch=master)](https://travis-ci.org/siddharthkp/cost-of-modules)
