@@ -69,7 +69,7 @@ I would want to make this tool a pre-publish checklist.
 - [ ] Include the size of your files
 - [ ] Check if `files` or `.npmignore` exists
 - [ ] Check if there are any `dev dependencies` that are specified as `dependencies` (tricky)
-- [ ] Specify the change in size with the last release. Something like this:
+- [ ] Compare size with the last release. Something like this:
 ![Warning](https://dl.dropboxusercontent.com/u/23355164/warning.png)
 
 
