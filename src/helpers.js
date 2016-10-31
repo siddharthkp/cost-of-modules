@@ -123,8 +123,9 @@ let attachNestedDependencies = (rootDependencies) => {
     let flatDependencies = [];
     let dependencyTree = getDependencyTree();
     for (let dep of rootDependencies) {
+        let name = dep.split('/')[0];
         flatDependencies.push({
-            name: dep,
+            name,
             /* Get flat child dependencies array */
             children: getDependenciesRecursively([], dependencyTree[dep])
         });
