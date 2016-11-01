@@ -73,6 +73,29 @@ let getRootDependencies = () => {
 };
 
 /*
+    Get scoped modules
+*/
+
+let getScopedModules = (scope) => {
+    let modules = {};
+    let command = `du --max-depth 1 -k node_modules/${scope}`;
+    /* Mac replaces --max-depth with -d */
+    let platform = os.platform();
+    if (platform === 'darwin') command = `du -d 1 -k node_modules/${scope}`;
+
+    let result = syncExec(command).stdout;
+    let rows = result.split('\n');
+    for (let row of rows) {
+        let name = row.split(`${scope}/`)[1];
+        if (name) {
+            let size = parseInt(row.split('node_modules/')[0], 10);
+            modules[`${scope}/${name}`] = size;
+        }
+    }
+    return modules;
+};
+
+/*
     Get size for all node_modules
 */
 let getSizeForNodeModules = () => {
@@ -87,8 +110,13 @@ let getSizeForNodeModules = () => {
     let rows = result.split('\n');
     for (let row of rows) {
         let name = row.split('node_modules/')[1];
-        let size = parseInt(row.split('node_modules/')[0], 10);
-        if (name) modules[name] = size;
+        if (name && name[0] === '@') {
+            let scopedModules = getScopedModules(name);
+            Object.assign(modules, scopedModules);
+        } else if (name) {
+            let size = parseInt(row.split('node_modules/')[0], 10);
+            modules[name] = size;
+        }
     }
     return modules;
 };
