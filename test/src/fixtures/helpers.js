@@ -1,6 +1,8 @@
 const syncExec = require('sync-exec');
 const fs = require('fs');
+
 const helpers = require('../../../lib/helpers');
+const tests = require('./tests.js');
 
 let clean = (includeDev) => {
     syncExec('rm -rf node_modules');
@@ -29,5 +31,5 @@ let setup = (includeDev) => {
 };
 
 module.exports = {
-    setup
+    setup, tests
 };
