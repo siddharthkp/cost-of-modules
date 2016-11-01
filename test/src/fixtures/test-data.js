@@ -1,30 +1,30 @@
 let rootDependencies = [
-    'callsites',
+    '@fake/callsites',
+    '@fake/has-color',
     'date-time',
-    'has-color',
     'once'
 ];
 
 let moduleSizes = {
-    'callsites': 16,
+    '@fake/callsites': 16,
+    '@fake/has-color': 12,
     'date-time': 16,
-    'has-color': 12,
     'once': 16,
     'time-zone': 16,
     'wrappy': 16
 };
 
 let flatDependencies = [
-    {name: 'callsites', children:[]},
+    {name: '@fake/callsites', children:[]},
+    {name: '@fake/has-color', children:[]},
     {name: 'date-time', children:['time-zone']},
-    {name: 'has-color', children:[]},
     {name: 'once', children:['wrappy']}
 ];
 
 let allDependencies = [
-    'callsites',
+    '@fake/callsites',
+    '@fake/has-color',
     'date-time',
-    'has-color',
     'once',
     'time-zone',
     'wrappy'

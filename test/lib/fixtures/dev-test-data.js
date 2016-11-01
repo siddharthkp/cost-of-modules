@@ -1,21 +1,21 @@
 'use strict';
 
-var rootDependencies = ['callsites', 'date-time', 'has-color', 'once', 'yargs-parser'];
+var rootDependencies = ['@fake/callsites', '@fake/has-color', 'date-time', 'once', 'yargs-parser'];
 
 var moduleSizes = {
-    'callsites': 16,
+    '@fake/callsites': 16,
+    '@fake/has-color': 12,
     'camelcase': 16,
     'date-time': 16,
-    'has-color': 12,
     'once': 16,
     'time-zone': 16,
     'wrappy': 16,
     'yargs-parser': 52
 };
 
-var flatDependencies = [{ name: 'callsites', children: [] }, { name: 'date-time', children: ['time-zone'] }, { name: 'has-color', children: [] }, { name: 'once', children: ['wrappy'] }, { name: 'yargs-parser', children: ['camelcase'] }];
+var flatDependencies = [{ name: '@fake/callsites', children: [] }, { name: '@fake/has-color', children: [] }, { name: 'date-time', children: ['time-zone'] }, { name: 'once', children: ['wrappy'] }, { name: 'yargs-parser', children: ['camelcase'] }];
 
-var allDependencies = ['callsites', 'camelcase', 'date-time', 'has-color', 'once', 'time-zone', 'wrappy', 'yargs-parser'];
+var allDependencies = ['@fake/callsites', '@fake/has-color', 'camelcase', 'date-time', 'once', 'time-zone', 'wrappy', 'yargs-parser'];
 
 module.exports = {
     rootDependencies: rootDependencies,
