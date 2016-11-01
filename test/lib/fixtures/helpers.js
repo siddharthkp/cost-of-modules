@@ -27,7 +27,7 @@ var fakePrivatePackages = function fakePrivatePackages() {
 var setup = function setup(includeDev) {
     clean();
     helpers.setup(includeDev);
-    fakePrivatePackages();
+    if (!includeDev) fakePrivatePackages();
 };
 
 module.exports = {

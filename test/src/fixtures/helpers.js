@@ -25,7 +25,7 @@ let fakePrivatePackages = () => {
 let setup = (includeDev) => {
     clean();
     helpers.setup(includeDev);
-    fakePrivatePackages();
+    if (!includeDev) fakePrivatePackages();
 };
 
 module.exports = {
