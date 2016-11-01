@@ -3,16 +3,17 @@
 var test = require('ava');
 var syncExec = require('sync-exec');
 var helpers = require('../../lib/helpers');
+var testHelpers = require('./fixtures/helpers');
 var testData = require('./fixtures/dev-test-data.js');
 
 var moduleSizes = void 0,
     rootDependencies = void 0,
     flatDependencies = void 0,
     allDependencies = void 0;
+
 test.before(function (t) {
-    syncExec('rm -rf node_modules');
     /* includeDev, this is equalent to running cost-of-modules --include-dev */
-    helpers.setup(true);
+    testHelpers.setup(true);
 });
 
 test.todo('setup was complete');
