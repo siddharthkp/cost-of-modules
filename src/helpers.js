@@ -69,7 +69,7 @@ let getRootDependencies = () => {
         console.log();
         process.exit(1);
     }
-    return Object.keys(dependencyTree);
+    return Object.keys(dependencyTree).sort();
 };
 
 /*
@@ -130,7 +130,7 @@ let attachNestedDependencies = (rootDependencies) => {
             children: getDependenciesRecursively([], dependencyTree[dep])
         });
     }
-    return flatDependencies;
+    return flatDependencies.sort();
 };
 
 /*

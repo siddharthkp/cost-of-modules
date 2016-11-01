@@ -1,10 +1,3 @@
-let rootDependencies = [
-    '@fake/callsites',
-    '@fake/has-color',
-    'date-time',
-    'once'
-];
-
 let moduleSizes = {
     '@fake/callsites': 16,
     '@fake/has-color': 12,
@@ -13,6 +6,13 @@ let moduleSizes = {
     'time-zone': 16,
     'wrappy': 16
 };
+
+let rootDependencies = [
+    '@fake/callsites',
+    '@fake/has-color',
+    'date-time',
+    'once'
+];
 
 let flatDependencies = [
     {name: '@fake/callsites', children:[]},
@@ -31,8 +31,8 @@ let allDependencies = [
 ];
 
 module.exports = {
-    rootDependencies,
     moduleSizes,
+    rootDependencies,
     flatDependencies,
     allDependencies
 };

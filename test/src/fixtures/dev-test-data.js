@@ -1,11 +1,3 @@
-let rootDependencies = [
-    '@fake/callsites',
-    '@fake/has-color',
-    'date-time',
-    'once',
-    'yargs-parser'
-];
-
 let moduleSizes = {
     '@fake/callsites': 16,
     '@fake/has-color': 12,
@@ -16,6 +8,14 @@ let moduleSizes = {
     'wrappy': 16,
     'yargs-parser': 52
 };
+
+let rootDependencies = [
+    '@fake/callsites',
+    '@fake/has-color',
+    'date-time',
+    'once',
+    'yargs-parser'
+];
 
 let flatDependencies = [
     {name: '@fake/callsites', children:[]},
@@ -37,8 +37,8 @@ let allDependencies = [
 ];
 
 module.exports = {
-    rootDependencies,
     moduleSizes,
+    rootDependencies,
     flatDependencies,
     allDependencies
 };
