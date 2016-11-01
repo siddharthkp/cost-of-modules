@@ -148,7 +148,7 @@ let getAllDependencies = (flatDependencies) => {
     allDependencies = allDependencies.filter((dep, index) => {
         return allDependencies.indexOf(dep) === index;
     });
-    return allDependencies;
+    return allDependencies.sort();
 };
 
 let displayResults = (flatDependencies, allDependencies, totalSize) => {
