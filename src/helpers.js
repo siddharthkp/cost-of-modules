@@ -106,7 +106,6 @@ let getSizeForNodeModules = () => {
     if (platform === 'darwin') command = 'du -d 1 -k -I ".*" node_modules';
 
     let result = syncExec(command).stdout;
-    console.log(result);
     /* Bunch of string parsing */
     let rows = result.split('\n');
     for (let row of rows) {

@@ -1,4 +1,4 @@
-let moduleSizes = {
+let moduleSizes = Object.assign({}, {
     '@sindresorhus/df': 16,
     'camelcase' :16,
     'cross-spawn-async': 32,
@@ -19,7 +19,7 @@ let moduleSizes = {
     'time-zone': 16,
     'wrappy': 16,
     'yargs-parser': 52
-};
+});
 
 let rootDependencies = [
     '@sindresorhus/df',

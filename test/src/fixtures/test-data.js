@@ -1,4 +1,11 @@
-let moduleSizes = {
+/*
+    Order of keys inside an object dependes on the environment,
+    this will make deepEqual with hardcoded objects fail.
+    Using Object.assign with en empty object {}, let's the
+    environment decide the order for fixtures as well.
+*/
+
+let moduleSizes = Object.assign({}, {
     '@sindresorhus/df': 16,
     'cross-spawn-async': 32,
     'date-time': 16,
@@ -15,7 +22,7 @@ let moduleSizes = {
     'which': 24,
     'wrappy': 16,
     'yallist': 36
-};
+});
 
 let rootDependencies = [
     '@sindresorhus/df',
