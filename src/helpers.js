@@ -100,10 +100,10 @@ let getScopedModules = (scope) => {
 */
 let getSizeForNodeModules = () => {
     let modules = {};
-    let command = 'du --max-depth 1 -k --exclude ".*" node_modules';
+    let command = 'du --max-depth 1 -k --exclude ".*" node_modules | sort -k2';
     /* Mac replaces --max-depth with -d and --exclude with -I */
     let platform = os.platform();
-    if (platform === 'darwin') command = 'du -d 1 -k -I ".*" node_modules';
+    if (platform === 'darwin') command = 'du -d 1 -k -I ".*" node_modules | sort -k2';
 
     let result = syncExec(command).stdout;
     /* Bunch of string parsing */
