@@ -7,7 +7,6 @@ let tests = (testData) => {
 
     test('get size for node_modules', t => {
         moduleSizes = helpers.getSizeForNodeModules();
-        console.log(moduleSizes);
         t.deepEqual(moduleSizes, testData.moduleSizes);
     });
 
