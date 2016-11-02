@@ -78,10 +78,10 @@ let getRootDependencies = () => {
 
 let getScopedModules = (scope) => {
     let modules = {};
-    let command = `du --max-depth 1 -k node_modules/${scope}`;
+    let command = `du --max-depth 1 -k --exclude ".*" node_modules/${scope}`;
     /* Mac replaces --max-depth with -d */
     let platform = os.platform();
-    if (platform === 'darwin') command = `du -d 1 -k node_modules/${scope}`;
+    if (platform === 'darwin') command = `du -d 1 -k -I ".*" node_modules/${scope}`;
 
     let result = syncExec(command).stdout;
     let rows = result.split('\n');
@@ -100,10 +100,10 @@ let getScopedModules = (scope) => {
 */
 let getSizeForNodeModules = () => {
     let modules = {};
-    let command = 'du --max-depth 1 -k --exclude .cache node_modules';
-    /* Mac replaces --max-depth with -d */
+    let command = 'du --max-depth 1 -k --exclude ".*" node_modules';
+    /* Mac replaces --max-depth with -d and --exclude with -I */
     let platform = os.platform();
-    if (platform === 'darwin') command = 'du -d 1 -k -I .cache node_modules';
+    if (platform === 'darwin') command = 'du -d 1 -k -I ".*" node_modules';
 
     let result = syncExec(command).stdout;
     /* Bunch of string parsing */

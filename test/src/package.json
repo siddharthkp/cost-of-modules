@@ -7,9 +7,8 @@
   "license": "MIT",
   "description": "This is just for test purposes",
   "dependencies": {
-    "callsites": "2.0.0",
+    "@whitneyit/data-fn": "1.0.2",
     "date-time": "1.1.0",
-    "has-color": "0.1.7",
     "once": "1.4.0"
   },
   "devDependencies": {
