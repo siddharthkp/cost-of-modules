@@ -7,7 +7,10 @@ let tests = (testData) => {
 
     test('get size for node_modules', t => {
         moduleSizes = helpers.getSizeForNodeModules();
-        t.deepEqual(moduleSizes, testData.moduleSizes);
+        let names = Object.keys(moduleSizes).sort();
+        let moduleSizesArray = [];
+        for (let name of names) moduleSizesArray.push({name, size: moduleSizes[name]});
+        t.deepEqual(moduleSizesArray, testData.moduleSizesArray);
     });
 
     test('get root dependencies', t => {

@@ -1,25 +1,23 @@
-let moduleSizes = {
-    '@sindresorhus/df': 16,
-    'camelcase' :16,
-    'cross-spawn-async': 32,
-    'date-time': 16,
-    'execa': 16,
-    'isexe': 36,
-    'lru-cache': 28,
-    'npm-run-path': 16,
-    'object-assign': 16,
-    'once': 16,
-    'path-key': 16,
-    'pseudomap': 24,
-    'strip-eof': 16,
-    'time-zone': 16,
-    'which': 24,
-    'wrappy': 16,
-    'yallist': 36,
-    'time-zone': 16,
-    'wrappy': 16,
-    'yargs-parser': 52
-};
+let moduleSizesArray = [
+    {name: '@sindresorhus/df', size: 16},
+    {name: 'camelcase', size: 16},
+    {name: 'cross-spawn-async', size: 32},
+    {name: 'date-time', size: 16},
+    {name: 'execa', size: 16},
+    {name: 'isexe', size: 36},
+    {name: 'lru-cache', size: 28},
+    {name: 'npm-run-path', size: 16},
+    {name: 'object-assign', size: 16},
+    {name: 'once', size: 16},
+    {name: 'path-key', size: 16},
+    {name: 'pseudomap', size: 24},
+    {name: 'strip-eof', size: 16},
+    {name: 'time-zone', size: 16},
+    {name: 'which', size: 24},
+    {name: 'wrappy', size: 16},
+    {name: 'yallist', size: 36},    
+    {name: 'yargs-parser', size:  52}
+];
 
 let rootDependencies = [
     '@sindresorhus/df',
@@ -57,7 +55,7 @@ let allDependencies = [
 ];
 
 module.exports = {
-    moduleSizes,
+    moduleSizesArray,
     rootDependencies,
     flatDependencies,
     allDependencies
