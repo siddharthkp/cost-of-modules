@@ -10,7 +10,6 @@ let tests = (testData) => {
         let names = Object.keys(moduleSizes).sort();
         let moduleSizesArray = [];
         for (let name of names) moduleSizesArray.push({name, size: moduleSizes[name]});
-        console.log(moduleSizesArray, testData.moduleSizesArray);
         t.deepEqual(moduleSizesArray, testData.moduleSizesArray);
     });
 
