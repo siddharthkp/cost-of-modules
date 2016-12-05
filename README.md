@@ -29,6 +29,8 @@ Run `cost-of-modules` in the directory you are working in.
 
 :star: this repo
 
+Help out with [windows support!](https://github.com/siddharthkp/cost-of-modules/issues/23)
+
 #### Motivation
 
 I recently published a npm module ([auto-install](https://github.com/siddharthkp/auto-install)) and I wanted to know how many bytes am I making people download before they can use it. Turns out, it was a whopping 30M!
@@ -47,7 +49,7 @@ Now, there are 3 things that you can do to make your npm package smaller
 
 4. Bonus: Bundle all your code together and strip out the functions that you don't use - I still have to try this out. This could be the most impactful one.
 
--- 
+--
 
 In my case, the big size was because of # 3, the bunch of npm packages that I was using.
 
