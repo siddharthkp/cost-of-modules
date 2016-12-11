@@ -1,9 +1,9 @@
 const fs = require('fs');
 const syncExec = require('sync-exec');
-const os = require('os');
 const Table = require('cli-table2');
 const {yellow} = require('colors');
 const argv = require('yargs-parser')(process.argv.slice(2));
+const path = require('path');
 
 /*
     By default, this assumes production mode
@@ -72,55 +72,63 @@ let getRootDependencies = () => {
     return Object.keys(dependencyTree).sort();
 };
 
+/* to fix the missing du problem on windows */
+
+let dirSize = (root) =>
+{
+    var out = 0;
+    
+        (getDirSizeRecursively = (root) => {
+            let itemStats = fs.lstatSync(root);
+            if (itemStats.isDirectory()) {
+                let allSubs = fs.readdirSync(root);
+                allSubs.forEach((file) => {
+                    getDirSizeRecursively(path.join(root, file));
+                });
+            } else {
+                out += itemStats.size;
+            }
+        })(root);
+
+    return Math.floor(out / 1024); /* in KB */
+};
 /*
     Get scoped modules
 */
-
 let getScopedModules = (scope) => {
     let modules = {};
-    let command = `du --max-depth 1 -k --exclude ".*" node_modules/${scope}`;
-    /* Mac replaces --max-depth with -d */
-    let platform = os.platform();
-    if (platform === 'darwin') command = `du -d 1 -k -I ".*" node_modules/${scope}`;
-
-    let result = syncExec(command).stdout;
-    let rows = result.split('\n');
-    for (let row of rows) {
-        let name = row.split(`${scope}/`)[1];
-        if (name) {
-            let size = parseInt(row.split('node_modules/')[0], 10);
-            modules[`${scope}/${name}`] = size;
+    let allScopes = fs.readdirSync(path.join('node_modules', scope));
+    allScopes.forEach((name) => {
+        let itemStats = fs.lstatSync(path.join('node_modules', scope, name));
+        if (itemStats.isDirectory()) {
+            let size = dirSize(path.join('node_modules', scope, name));
+            if (name) {
+                modules[`${scope}/${name}`] = size;
+            }
         }
-    }
+    });
     return modules;
 };
 
-/*
-    Get size for all node_modules
-*/
 let getSizeForNodeModules = () => {
     let modules = {};
-    let command = 'du --max-depth 1 -k --exclude ".*" node_modules';
-    /* Mac replaces --max-depth with -d and --exclude with -I */
-    let platform = os.platform();
-    if (platform === 'darwin') command = 'du -d 1 -k -I ".*" node_modules';
+    let allModules = fs.readdirSync('node_modules');
+    allModules.forEach((name) => {
 
-    let result = syncExec(command).stdout;
-    /* Bunch of string parsing */
-    let rows = result.split('\n');
-    for (let row of rows) {
-        let name = row.split('node_modules/')[1];
-        if (name && name[0] === '@') {
-            let scopedModules = getScopedModules(name);
-            Object.assign(modules, scopedModules);
-        } else if (name) {
-            let size = parseInt(row.split('node_modules/')[0], 10);
-            modules[name] = size;
+        let itemStats = fs.lstatSync(path.join('node_modules', name));
+        if (itemStats.isDirectory()) {
+            if (name && name[0] === '@') {
+                let scopedModules = getScopedModules(name);
+                Object.assign(modules, scopedModules);
+            } else if (name) {
+                let size = dirSize(path.join('node_modules', name));
+                modules[name] = size;
+            }
         }
-    }
+    });
+    
     return modules;
 };
-
 /*
     Get all nested dependencies for a root dependency
     Traverse recursively through the tree
