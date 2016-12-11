@@ -74,21 +74,20 @@ let getRootDependencies = () => {
 
 /* to fix the missing du problem on windows */
 
-let dirSize = (root) =>
-{
-    var out = 0;
-    
-        (getDirSizeRecursively = (root) => {
-            let itemStats = fs.lstatSync(root);
-            if (itemStats.isDirectory()) {
-                let allSubs = fs.readdirSync(root);
-                allSubs.forEach((file) => {
-                    getDirSizeRecursively(path.join(root, file));
-                });
-            } else {
-                out += itemStats.size;
-            }
-        })(root);
+let dirSize = (root) => {
+    let out = 0;
+    let getDirSizeRecursively;
+    (getDirSizeRecursively = (rootLocal) => {
+        let itemStats = fs.lstatSync(rootLocal);
+        if (itemStats.isDirectory()) {
+            let allSubs = fs.readdirSync(rootLocal);
+            allSubs.forEach((file) => {
+                getDirSizeRecursively(path.join(rootLocal, file));
+            });
+        } else {
+            out += itemStats.size;
+        }
+    })(root);
 
     return Math.floor(out / 1024); /* in KB */
 };
@@ -114,7 +113,6 @@ let getSizeForNodeModules = () => {
     let modules = {};
     let allModules = fs.readdirSync('node_modules');
     allModules.forEach((name) => {
-
         let itemStats = fs.lstatSync(path.join('node_modules', name));
         if (itemStats.isDirectory()) {
             if (name && name[0] === '@') {
@@ -126,7 +124,6 @@ let getSizeForNodeModules = () => {
             }
         }
     });
-    
     return modules;
 };
 /*
