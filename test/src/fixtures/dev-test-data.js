@@ -1,13 +1,13 @@
-let moduleSizesArray = [
-    {name: '@whitneyit/data-fn', size: 24},
-    {name: 'camelcase', size: 16},
-    {name: 'date-time', size: 16},
-    {name: 'is', size: 72},
-    {name: 'node.extend', size: 20},
-    {name: 'once', size: 16},
-    {name: 'time-zone', size: 16},
-    {name: 'wrappy', size: 16 },
-    {name: 'yargs-parser', size:  52}
+let moduleSizesArray = [ 
+  {name: '@whitneyit/data-fn', size: 7},
+  {name: 'camelcase', size: 5},
+  {name: 'date-time', size: 4},
+  {name: 'is', size: 55},
+  {name: 'node.extend', size: 14},
+  {name: 'once', size: 5},
+  {name: 'time-zone', size: 4},
+  {name: 'wrappy', size: 4},
+  {name: 'yargs-parser', size: 35} 
 ];
 
 let rootDependencies = [
