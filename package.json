@@ -1,6 +1,6 @@
 {
   "name": "cost-of-modules",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Find out which of your dependencies is causing bloat",
   "author": "siddharthkp",
   "homepage": "https://github.com/siddharthkp/cost-of-modules#readme",
