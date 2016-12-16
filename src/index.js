@@ -36,7 +36,8 @@ let flatDependencies = helpers.attachNestedDependencies(rootDependencies);
 /*
     Modules actual size = size of the module + size of it's children
 */
-flatDependencies
+for (let i = 0; i < flatDependencies.length; i++) {
+    let dep = flatDependencies[i];
 
     let sizeOfModule = moduleSizes[dep.name];
 
