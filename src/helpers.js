@@ -133,7 +133,9 @@ let getSizeForNodeModules = () => {
 */
 let getDependenciesRecursively = (modules = [], tree) => {
     let deps = Object.keys(tree);
-    for (let dep of deps) {
+    for (let i = 0; i < deps.length; i++) {
+        let dep = deps[i];
+
         if (typeof tree[dep] === 'object' && tree[dep] !== null) {
             if (tree[dep].dependencies !== null) {
                 if (dep !== 'dependencies') modules.push(dep);
@@ -155,7 +157,9 @@ let getDependenciesRecursively = (modules = [], tree) => {
 let attachNestedDependencies = (rootDependencies) => {
     let flatDependencies = [];
     let dependencyTree = getDependencyTree();
-    for (let dep of rootDependencies) {
+    for (let i = 0; i < rootDependencies.length; i++) {
+        let dep = rootDependencies[i];
+
         flatDependencies.push({
             name: dep,
             /* Get flat child dependencies array */
@@ -172,7 +176,9 @@ let attachNestedDependencies = (rootDependencies) => {
 */
 let getAllDependencies = (flatDependencies) => {
     let allDependencies = [];
-    for (let dep of flatDependencies) {
+    for (let i = 0; i < flatDependencies.length; i++) {
+        let dep = flatDependencies[i];
+
         allDependencies.push(dep.name); // Root dependency
         allDependencies = allDependencies.concat(dep.children); // Children
     }
