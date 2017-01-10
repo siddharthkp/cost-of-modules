@@ -36,7 +36,7 @@ let setup = (includeDev) => {
         Ignore devDependencies/bundledDependencies by default
         Adds them with --include-dev
     */
-    console.log('Making sure dependendies are installed');
+    console.log('Making sure dependencies are installed');
 
     let command = `npm install ${productionModifier}`;
     if (argv.yarn) command = command.replace('npm', 'yarn');
