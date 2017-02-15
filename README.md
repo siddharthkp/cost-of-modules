@@ -30,8 +30,6 @@ Run `cost-of-modules` in the directory you are working in.
 
 :star: this repo
 
-Help out with [windows support!](https://github.com/siddharthkp/cost-of-modules/issues/23)
-
 #### Motivation
 
 I recently published a npm module ([auto-install](https://github.com/siddharthkp/auto-install)) and I wanted to know how many bytes am I making people download before they can use it. Turns out, it was a whopping 30M!
