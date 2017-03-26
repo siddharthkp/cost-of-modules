@@ -1,5 +1,5 @@
 let moduleSizesArray = [
-  {name: '@whitneyit/data-fn', size: 7},
+  {name: '@whitneyit/data-fn', size: 6},
   {name: 'date-time', size: 4},
   {name: 'is', size: 55},
   {name: 'node.extend', size: 14},
