@@ -7,7 +7,7 @@
   "license": "MIT",
   "description": "This is just for test purposes",
   "dependencies": {
-    "@whitneyit/data-fn": "1.0.2",
+    "@siddharthkp/empty": "0.0.0",
     "date-time": "1.1.0",
     "once": "1.4.0"
   },

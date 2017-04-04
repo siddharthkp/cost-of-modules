@@ -1,30 +1,27 @@
 let moduleSizesArray = [
-  {name: '@whitneyit/data-fn', size: 7},
+  {name: '@siddharthkp/empty', size: 1},
   {name: 'date-time', size: 4},
-  {name: 'is', size: 55},
-  {name: 'node.extend', size: 14},
   {name: 'once', size: 5},
   {name: 'time-zone', size: 4},
-  {name: 'wrappy', size: 4} 
+  {name: 'wrappy', size: 4}
 ];
 
 let rootDependencies = [
-    '@whitneyit/data-fn',
+    '@siddharthkp/empty',
     'date-time',
-    'once'
+    'once',
+
 ];
 
 let flatDependencies = [
-    {name: '@whitneyit/data-fn',  children:['node.extend', 'is']},
+    {name: '@siddharthkp/empty',  children:[]},
     {name: 'date-time', children:['time-zone']},
     {name: 'once', children:['wrappy']}
 ];
 
 let allDependencies = [
-    '@whitneyit/data-fn',
+    '@siddharthkp/empty',
     'date-time',
-    'is',
-    'node.extend',
     'once',
     'time-zone',
     'wrappy'
