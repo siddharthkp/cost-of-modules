@@ -46,7 +46,7 @@ let setup = (includeDev) => {
 
     /* Check if node modules exist and then backup */
     let nodeModulesExist = fs.existsSync('node_modules');
-    if (nodeModulesExist) syncExec('mv node_modules node_modules_bak', {stdio: [0, 1, 2]});
+    if (nodeModulesExist) syncExec('cp -r node_modules node_modules_bak', {stdio: [0, 1, 2]});
 
     /* Run install command */
     syncExec(command, {stdio: [0, 1, 2]});
