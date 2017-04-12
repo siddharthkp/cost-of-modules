@@ -1,7 +1,7 @@
 {
   "name": "cost-of-modules",
-  "version": "1.0.0",
-  "description": "Find out which of your dependencies is causing bloat",
+  "version": "1.0.1",
+  "description": "Find out which of your dependencies are slowing you down 🐢",
   "author": "siddharthkp",
   "homepage": "https://github.com/siddharthkp/cost-of-modules#readme",
   "main": "src/index.js",
