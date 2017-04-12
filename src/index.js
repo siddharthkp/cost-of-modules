@@ -61,3 +61,6 @@ allDependencies.forEach((dep) => { totalSize += moduleSizes[dep] || 0; });
 
 /* Display results */
 helpers.displayResults(flatDependencies, allDependencies, totalSize);
+
+/* Return to original state */
+helpers.teardown();

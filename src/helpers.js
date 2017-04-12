@@ -43,6 +43,12 @@ let setup = (includeDev) => {
 
     console.log(command);
     console.log();
+
+    /* Check if node modules exist and then backup */
+    let nodeModulesExist = fs.existsSync('node_modules');
+    if (nodeModulesExist) syncExec('mv node_modules node_modules_bak', {stdio: [0, 1, 2]});
+
+    /* Run install command */
     syncExec(command, {stdio: [0, 1, 2]});
     console.log();
 };
@@ -223,11 +229,29 @@ let displayResults = (flatDependencies, allDependencies, totalSize) => {
     console.log();
 };
 
+/* Return to original state */
+const teardown = () => {
+    /*
+      If the command is running with no-install,
+      there is no need for teardown
+    */
+    if (argv.install != null && !argv.install) return;
+    /*
+      Restore node_modules backup if it exists
+    */
+    let backupExist = fs.existsSync('node_modules_bak');
+    if (backupExist) {
+        syncExec('rm -rf node_modules', {stdio: [0, 1, 2]});
+        syncExec('mv node_modules_bak node_modules', {stdio: [0, 1, 2]});
+    }
+};
+
 module.exports = {
     setup,
     getSizeForNodeModules,
     getRootDependencies,
     attachNestedDependencies,
     getAllDependencies,
-    displayResults
+    displayResults,
+    teardown
 };

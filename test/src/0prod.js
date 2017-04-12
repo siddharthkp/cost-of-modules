@@ -7,5 +7,8 @@ test.before(t => {
     testHelpers.setup();
 });
 
-testHelpers.tests(testData);
+test.after(t => {
+    testHelpers.teardown();
+});
 
+testHelpers.tests(testData);
