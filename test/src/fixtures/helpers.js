@@ -4,7 +4,6 @@ const helpers = require('../../../lib/helpers');
 const tests = require('./tests.js');
 
 let clean = (includeDev) => {
-    //syncExec('rm -rf node_modules node_modules_bak');
     syncExec('cp ../src/package.json .');
 };
 
