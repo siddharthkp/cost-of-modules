@@ -10,7 +10,7 @@
     "build": "babel src -d lib && babel test/src -d test/lib",
     "lint": "eslint src",
     "test": "npm run lint && npm run build && npm run ava",
-    "ava": "ava test/lib -s --no-cache"
+    "ava": "ava test/lib/*.js -s --no-cache"
   },
   "files": [
     "lib"
@@ -32,6 +32,7 @@
     "ansi-regex": "2.0.0",
     "cli-table2": "0.2.0",
     "colors": "1.1.2",
+    "fs-extra": "2.1.0",
     "sync-exec": "0.6.2",
     "yargs-parser": "4.0.2"
   },

@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs-extra');
 const syncExec = require('sync-exec');
 const Table = require('cli-table2');
 const {yellow} = require('colors');
@@ -43,6 +43,12 @@ let setup = (includeDev) => {
 
     console.log(command);
     console.log();
+
+    /* Check if node modules exist and then backup */
+    let nodeModulesExist = fs.existsSync('node_modules');
+    if (nodeModulesExist) fs.copySync('node_modules', 'node_modules_bak');
+
+    /* Run install command */
     syncExec(command, {stdio: [0, 1, 2]});
     console.log();
 };
@@ -223,11 +229,29 @@ let displayResults = (flatDependencies, allDependencies, totalSize) => {
     console.log();
 };
 
+/* Return to original state */
+const teardown = () => {
+    /*
+      If the command is running with no-install,
+      there is no need for teardown
+    */
+    if (argv.install != null && !argv.install) return;
+    /*
+      Restore node_modules backup if it exists
+    */
+    let backupExist = fs.existsSync('node_modules_bak');
+    if (backupExist) {
+        fs.removeSync('node_modules');
+        fs.moveSync('node_modules_bak', 'node_modules');
+    }
+};
+
 module.exports = {
     setup,
     getSizeForNodeModules,
     getRootDependencies,
     attachNestedDependencies,
     getAllDependencies,
-    displayResults
+    displayResults,
+    teardown
 };
