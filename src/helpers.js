@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs-extra');
 const syncExec = require('sync-exec');
 const Table = require('cli-table2');
 const {yellow} = require('colors');
@@ -46,7 +46,7 @@ let setup = (includeDev) => {
 
     /* Check if node modules exist and then backup */
     let nodeModulesExist = fs.existsSync('node_modules');
-    if (nodeModulesExist) syncExec('cp -r node_modules node_modules_bak', {stdio: [0, 1, 2]});
+    if (nodeModulesExist) fs.copySync('node_modules', 'node_modules_bak');
 
     /* Run install command */
     syncExec(command, {stdio: [0, 1, 2]});
@@ -241,8 +241,8 @@ const teardown = () => {
     */
     let backupExist = fs.existsSync('node_modules_bak');
     if (backupExist) {
-        syncExec('rm -rf node_modules', {stdio: [0, 1, 2]});
-        syncExec('mv node_modules_bak node_modules', {stdio: [0, 1, 2]});
+        fs.removeSync('node_modules');
+        fs.moveSync('node_modules_bak', 'node_modules');
     }
 };
 
