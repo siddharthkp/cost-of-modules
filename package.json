@@ -8,7 +8,7 @@
   "bin": "lib/index.js",
   "scripts": {
     "build": "babel src -d lib && babel test/src -d test/lib",
-    "test": "npm run lint && npm run build && npm run ava",
+    "test": "npm run build && npm run ava",
     "ava": "ava test/lib/*.js -s --no-cache",
     "precommit": "lint-staged"
   },
