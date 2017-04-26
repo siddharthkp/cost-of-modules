@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-const helpers = require('./helpers');
+const helpers = require('./helpers')
 
-helpers.setup();
+helpers.setup()
 
-console.log('Calculating...');
-console.log();
+console.log('Calculating...')
+console.log()
 
 /*
     Get size for all node modules
@@ -15,14 +15,14 @@ console.log();
         b: 220
     }
 */
-const moduleSizes = helpers.getSizeForNodeModules();
+const moduleSizes = helpers.getSizeForNodeModules()
 
 /*
     Get root dependencies from tree
     These are the ones declared as dependendies in package.json
     [a, b, c, d]
 */
-let rootDependencies = helpers.getRootDependencies();
+let rootDependencies = helpers.getRootDependencies()
 
 /*
     Attach the nested dependendies in a flat manner
@@ -31,21 +31,23 @@ let rootDependencies = helpers.getRootDependencies();
         children: [a, b, c, d]
     }]
 */
-let flatDependencies = helpers.attachNestedDependencies(rootDependencies);
+let flatDependencies = helpers.attachNestedDependencies(rootDependencies)
 
 /*
     Modules actual size = size of the module + size of it's children
 */
 for (let i = 0; i < flatDependencies.length; i++) {
-    let dep = flatDependencies[i];
+  let dep = flatDependencies[i]
 
-    let sizeOfModule = moduleSizes[dep.name];
+  let sizeOfModule = moduleSizes[dep.name]
 
-    let sizeOfChildren = 0;
-    dep.children.forEach((child) => { sizeOfChildren += moduleSizes[child] || 0; });
+  let sizeOfChildren = 0
+  dep.children.forEach(child => {
+    sizeOfChildren += moduleSizes[child] || 0
+  })
 
-    dep.actualSize = sizeOfModule + sizeOfChildren;
-    dep.numberOfChildren = dep.children.length;
+  dep.actualSize = sizeOfModule + sizeOfChildren
+  dep.numberOfChildren = dep.children.length
 }
 
 /*
@@ -53,14 +55,16 @@ for (let i = 0; i < flatDependencies.length; i++) {
     Root dependencies +  all their children
     Deduplicated
 */
-let allDependencies = helpers.getAllDependencies(flatDependencies);
+let allDependencies = helpers.getAllDependencies(flatDependencies)
 
 /* Total size of node_modules */
-let totalSize = 0;
-allDependencies.forEach((dep) => { totalSize += moduleSizes[dep] || 0; });
+let totalSize = 0
+allDependencies.forEach(dep => {
+  totalSize += moduleSizes[dep] || 0
+})
 
 /* Display results */
-helpers.displayResults(flatDependencies, allDependencies, totalSize);
+helpers.displayResults(flatDependencies, allDependencies, totalSize)
 
 /* Return to original state */
-helpers.teardown();
+helpers.teardown()
