@@ -1,8 +1,12 @@
+# Dist files
+
+test/dist
+dist
+
 # Logs
 logs
 *.log
 npm-debug.log*
-test/lib
 
 # Runtime data
 pids

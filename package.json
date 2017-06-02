@@ -5,15 +5,16 @@
   "author": "siddharthkp",
   "homepage": "https://github.com/siddharthkp/cost-of-modules#readme",
   "main": "src/index.js",
-  "bin": "lib/index.js",
+  "bin": "dist/index.js",
   "scripts": {
-    "build": "babel src -d lib && babel test/src -d test/lib",
-    "test": "npm run build && npm run ava",
-    "ava": "ava test/lib/*.js -s --no-cache",
+    "build": "babel src -d dist",
+    "build-test": "babel test/src -d test/dist",
+    "test": "npm run build && npm run build-test && npm run ava",
+    "ava": "ava test/dist/*.js -s --no-cache",
     "precommit": "lint-staged"
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "repository": {
     "type": "git",
@@ -39,13 +40,20 @@
   "devDependencies": {
     "ava": "0.16.0",
     "babel-cli": "6.18.0",
-    "babel-preset-es2015": "6.18.0",
+    "babel-preset-env": "^1.4.0",
     "husky": "0.13.3",
     "lint-staged": "3.4.0"
   },
   "babel": {
     "presets": [
-      "es2015"
+      [
+        "env",
+        {
+          "targets": {
+            "node": "4"
+          }
+        }
+      ]
     ]
   },
   "lint-staged": {
