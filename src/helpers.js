@@ -1,9 +1,21 @@
 const fs = require('fs-extra')
 const syncExec = require('sync-exec')
 const Table = require('cli-table2')
-const { yellow } = require('colors')
+const { yellow: lemon } = require('colors')
 const argv = require('yargs-parser')(process.argv.slice(2))
 const path = require('path')
+
+const help = `
+cost-of-modules
+===============
+--help - this display
+--include-dev - include devDependencies in the cost
+--no-install - don't install dependencies when calculating the cost
+--yarn - use yarn instead of npm
+--less - limit the results to only 10
+--quiet,-q - no logs to console except for the final output
+--json,-j - output a JSON blob (this also means the --quiet flag is active)
+`
 
 /*
     By default, this assumes production mode
@@ -12,8 +24,13 @@ const path = require('path')
 */
 let productionModifier = '--production'
 
+let json = argv.j || argv.json || 0
+let hush = argv.q || argv.quiet || json > 0 || false
+let log = (...args) => (!hush ? console.log(...args) : null)
+let yellow = (...args) => (json > 0 ? lemon(...args) : args.join(''))
+
 let setup = includeDev => {
-  console.log()
+  log()
 
   if (argv.includeDev || includeDev) productionModifier = ''
 
@@ -23,8 +40,8 @@ let setup = includeDev => {
     */
   let packageJSONExists = fs.existsSync('package.json')
   if (!packageJSONExists) {
-    console.log('package.json not found!')
-    console.log()
+    log('package.json not found!')
+    log()
     process.exit()
   }
 
@@ -36,13 +53,13 @@ let setup = includeDev => {
         Ignore devDependencies/bundledDependencies by default
         Adds them with --include-dev
     */
-  console.log('Making sure dependencies are installed')
+  log('Making sure dependencies are installed')
 
   let command = `npm install ${productionModifier}`
   if (argv.yarn) command = command.replace('npm', 'yarn')
 
-  console.log(command)
-  console.log()
+  log(command)
+  log()
 
   /* Check if node modules exist and then backup */
   let nodeModulesExist = fs.existsSync('node_modules')
@@ -50,7 +67,7 @@ let setup = includeDev => {
 
   /* Run install command */
   syncExec(command, { stdio: [0, 1, 2] })
-  console.log()
+  log()
 }
 
 /*
@@ -71,8 +88,8 @@ let getDependencyTree = () => {
 let getRootDependencies = () => {
   let dependencyTree = getDependencyTree()
   if (!dependencyTree) {
-    console.log('There are no dependencies!')
-    console.log()
+    log('There are no dependencies!')
+    log()
     process.exit(1)
   }
   return Object.keys(dependencyTree).sort()
@@ -227,9 +244,9 @@ let displayResults = (flatDependencies, allDependencies, totalSize) => {
   ]) // Converting to M
 
   /* Print the table with some padding */
-  console.log()
+  log()
   console.log(table.toString())
-  console.log()
+  log()
 }
 
 /* Return to original state */
@@ -250,6 +267,10 @@ const teardown = () => {
 }
 
 module.exports = {
+  argv,
+  help,
+  log,
+  setup,
   setup,
   getSizeForNodeModules,
   getRootDependencies,
