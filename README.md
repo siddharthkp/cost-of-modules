@@ -77,3 +77,8 @@ I would want to make this tool a pre-publish checklist.
 #### License
 
 MIT © [siddharthkp](https://github.com/siddharthkp)
+
+
+#### Sponsor
+
+[![Sponsor](https://app.codesponsor.io/embed/LhLT2c31ydJzdLUuSR9f8mCA/siddharthkp/cost-of-modules.svg)](https://app.codesponsor.io/link/LhLT2c31ydJzdLUuSR9f8mCA/siddharthkp/cost-of-modules)
