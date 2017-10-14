@@ -1,10 +1,20 @@
 ### Cost of modules
 Find out which of your dependencies is slowing you down
 
+&nbsp;
+
 [![Build
 Status](https://api.travis-ci.org/siddharthkp/cost-of-modules.svg?branch=master)](https://travis-ci.org/siddharthkp/cost-of-modules)
 [![npm](https://img.shields.io/npm/v/cost-of-modules.svg?maxAge=3600)](https://www.npmjs.com/package/cost-of-modules)
 [![npm](https://img.shields.io/npm/dt/cost-of-modules.svg?maxAge=3600)](https://www.npmjs.com/package/cost-of-modules)
+
+&nbsp;
+
+#### Sponsor
+
+[![Sponsor](https://app.codesponsor.io/embed/LhLT2c31ydJzdLUuSR9f8mCA/siddharthkp/cost-of-modules.svg)](https://app.codesponsor.io/link/LhLT2c31ydJzdLUuSR9f8mCA/siddharthkp/cost-of-modules)
+
+&nbsp;
 
 ![Find out which of your dependencies is causing bloat](https://raw.githubusercontent.com/siddharthkp/cost-of-modules/master/screenshot.jpg)
 
@@ -77,8 +87,3 @@ I would want to make this tool a pre-publish checklist.
 #### License
 
 MIT © [siddharthkp](https://github.com/siddharthkp)
-
-
-#### Sponsor
-
-[![Sponsor](https://app.codesponsor.io/embed/LhLT2c31ydJzdLUuSR9f8mCA/siddharthkp/cost-of-modules.svg)](https://app.codesponsor.io/link/LhLT2c31ydJzdLUuSR9f8mCA/siddharthkp/cost-of-modules)
