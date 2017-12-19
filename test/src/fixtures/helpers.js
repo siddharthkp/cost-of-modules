@@ -1,6 +1,6 @@
 const syncExec = require('sync-exec');
 
-const helpers = require('../../../lib/helpers');
+const helpers = require('../../../src/helpers');
 const tests = require('./tests.js');
 
 let clean = (includeDev) => {
