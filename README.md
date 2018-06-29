@@ -1,5 +1,6 @@
-### Cost of modules
-Find out which of your dependencies is slowing you down
+# Cost of modules
+
+Find out which of your dependencies are slowing you down
 
 &nbsp;
 
@@ -8,9 +9,16 @@ Status](https://api.travis-ci.org/siddharthkp/cost-of-modules.svg?branch=master)
 [![npm](https://img.shields.io/npm/v/cost-of-modules.svg?maxAge=3600)](https://www.npmjs.com/package/cost-of-modules)
 [![npm](https://img.shields.io/npm/dt/cost-of-modules.svg?maxAge=3600)](https://www.npmjs.com/package/cost-of-modules)
 
-&nbsp;
+- [Cost of modules](#cost-of-modules)
+  - [Sponsor](#sponsor)
+  - [Install](#install)
+  - [Usage](#usage)
+  - [Options](#options)
+  - [Show your support](#show-your-support)
+  - [Motivation](#motivation)
+  - [License](#license)
 
-#### Sponsor
+## Sponsor
 
 [![Sponsor](https://app.codesponsor.io/embed/LhLT2c31ydJzdLUuSR9f8mCA/siddharthkp/cost-of-modules.svg)](https://app.codesponsor.io/link/LhLT2c31ydJzdLUuSR9f8mCA/siddharthkp/cost-of-modules)
 
@@ -18,15 +26,15 @@ Status](https://api.travis-ci.org/siddharthkp/cost-of-modules.svg?branch=master)
 
 ![Find out which of your dependencies is causing bloat](https://raw.githubusercontent.com/siddharthkp/cost-of-modules/master/screenshot.jpg)
 
-#### Install
+## Install
 
 `npm install -g cost-of-modules`
 
-#### Usage
+## Usage
 
 Run `cost-of-modules` in the directory you are working in.
 
-#### Options
+## Options
 
 `--less`  Show the biggest 10 modules
 
@@ -36,11 +44,11 @@ Run `cost-of-modules` in the directory you are working in.
 
 `--include-dev`  Include devDependencies as well - for 🚀 collaborator experience
 
-#### Show your support
+## Show your support
 
 :star: this repo
 
-#### Motivation
+## Motivation
 
 I recently published a npm module ([auto-install](https://github.com/siddharthkp/auto-install)) and I wanted to know how many bytes am I making people download before they can use it. Turns out, it was a whopping 30M!
 
@@ -83,7 +91,6 @@ I would want to make this tool a pre-publish checklist.
 - [ ] Compare size with the last release. Something like this:
 ![Warning](https://raw.githubusercontent.com/siddharthkp/cost-of-modules/master/warning.png)
 
-
-#### License
+## License
 
 MIT © [siddharthkp](https://github.com/siddharthkp)
