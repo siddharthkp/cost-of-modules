@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const helpers = require('./helpers')
-
+const { red, green } = require('colors')
 helpers.setup()
 
 console.log('Calculating...')
@@ -63,8 +63,26 @@ allDependencies.forEach(dep => {
   totalSize += moduleSizes[dep] || 0
 })
 
-/* Display results */
-helpers.displayResults(flatDependencies, allDependencies, totalSize)
+let exitCode = 0
+if (argv.assertSmaller) {
+  if (totalSize > argv.assertSmaller) {
+    console.info(
+      `Total size is bigger than expected ${totalSize}K > ${
+        argv.assertSmaller
+      }K`.red
+    ),
+      (exitCode = 1)
+  } else {
+    console.info(
+      `Total size is within parameters ${totalSize}K <= ${argv.assertSmaller}K`
+        .green
+    )
+  }
+} else {
+  /* Display results */
+  helpers.displayResults(flatDependencies, allDependencies, totalSize)
+}
 
 /* Return to original state */
 helpers.teardown()
+process.exit(exitCode)
