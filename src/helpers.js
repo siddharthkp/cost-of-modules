@@ -1,7 +1,7 @@
 const fs = require('fs-extra')
 const syncExec = require('sync-exec')
 const Table = require('cli-table2')
-const colors = require('colors')
+const { yellow } = require('colors')
 const argv = require('yargs-parser')(process.argv.slice(2))
 const path = require('path')
 
