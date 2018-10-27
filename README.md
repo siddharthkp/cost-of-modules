@@ -36,6 +36,8 @@ Run `cost-of-modules` in the directory you are working in.
 
 `--include-dev`  Include devDependencies as well - for 🚀 collaborator experience
 
+`--assert-smaller [size in KB]` - Checks whether the final package size is smaller than given value, if not the process will exit with error
+
 #### Show your support
 
 :star: this repo

@@ -18,6 +18,12 @@ let setup = includeDev => {
     console.log(
       '\t--assert-smaller <size in KB> - Checks whether the final package size is smaller than given value, if not the process will exit with error'
     )
+    console.log('\t--yarn - Use yarn instead of npm to install dependencies')
+    console.log('\t--less - Show the biggest 10 modules')
+    console.log('\t--no-install - Skip installation')
+    console.log(
+      '\t--include-dev - Include devDependencies as well - for 🚀 collaborator experience'
+    )
     console.log('\t--help - Show this help')
     process.exit(0)
   }
