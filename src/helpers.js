@@ -83,17 +83,17 @@ let getRootDependencies = () => {
 let dirSize = root => {
   let out = 0
   let getDirSizeRecursively
-  ;(getDirSizeRecursively = rootLocal => {
-    let itemStats = fs.lstatSync(rootLocal)
-    if (itemStats.isDirectory()) {
-      let allSubs = fs.readdirSync(rootLocal)
-      allSubs.forEach(file => {
-        getDirSizeRecursively(path.join(rootLocal, file))
-      })
-    } else {
-      out += itemStats.size
-    }
-  })(root)
+    ; (getDirSizeRecursively = rootLocal => {
+      let itemStats = fs.lstatSync(rootLocal)
+      if (itemStats.isDirectory()) {
+        let allSubs = fs.readdirSync(rootLocal)
+        allSubs.forEach(file => {
+          getDirSizeRecursively(path.join(rootLocal, file))
+        })
+      } else {
+        out += itemStats.size
+      }
+    })(root)
 
   return Math.floor(out / 1024) /* in KB */
 }
@@ -230,6 +230,18 @@ let displayResults = (flatDependencies, allDependencies, totalSize) => {
   console.log()
   console.log(table.toString())
   console.log()
+
+  /* Create a Json File */
+  if (createJson == 'json') {
+    let tableJSON = JSON.stringify(sortedDependencies);
+    fs.writeFile('table.json', tableJSON, function (err) {
+      if (err) {
+        return console.log(err)
+      }
+      console.log()
+      console.log('table.json create!')
+    })
+  }
 }
 
 /* Return to original state */
