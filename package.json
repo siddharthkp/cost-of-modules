@@ -35,7 +35,7 @@
     "colors": "1.1.2",
     "fs-extra": "2.1.0",
     "sync-exec": "0.6.2",
-    "yargs-parser": "4.0.2"
+    "yargs-parser": "13.1.2"
   },
   "devDependencies": {
     "ava": "0.16.0",
