@@ -12,6 +12,6 @@
     "once": "1.4.0"
   },
   "devDependencies": {
-    "yargs-parser": "4.0.2"
+    "yargs-parser": "19.0.4"
   }
 }
