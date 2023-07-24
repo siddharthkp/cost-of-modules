@@ -17,6 +17,12 @@ console.log()
 */
 const moduleSizes = helpers.getSizeForNodeModules()
 
+// Get command line arguments
+const argv = helpers.getParsedArguments()
+
+// Get the packages to be excluded
+const excludePackages = argv.exclude ? argv.exclude.split(",") : [];
+
 /*
     Get root dependencies from tree
     These are the ones declared as dependendies in package.json
@@ -31,7 +37,10 @@ let rootDependencies = helpers.getRootDependencies()
         children: [a, b, c, d]
     }]
 */
-let flatDependencies = helpers.attachNestedDependencies(rootDependencies)
+let flatDependencies = helpers.attachNestedDependencies(rootDependencies).filter((dep) => {
+    // Exclude the packages specified by the 'exclude' flag
+    return !excludePackages.includes(dep.name);
+  })
 
 /*
     Modules actual size = size of the module + size of it's children

@@ -36,6 +36,8 @@ Run `cost-of-modules` in the directory you are working in.
 
 `--include-dev`  Include devDependencies as well - for 🚀 collaborator experience
 
+`--exclude`  Exclude specific packages from the calculation. Provide a comma-separated list of packages, for example: `--exclude=package1,package2`
+
 #### Show your support
 
 :star: this repo

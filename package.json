@@ -11,7 +11,8 @@
     "build-test": "babel test/src -d test/dist",
     "test": "npm run build && npm run build-test && npm run ava",
     "ava": "ava test/dist/*.js -s --no-cache",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "prettier": "prettier --write --single-quote --no-semi --trailing-comma es5"
   },
   "files": [
     "dist"
@@ -42,7 +43,8 @@
     "babel-cli": "6.18.0",
     "babel-preset-env": "^1.4.0",
     "husky": "0.13.3",
-    "lint-staged": "3.4.0"
+    "lint-staged": "3.4.0",
+    "prettier": "^3.0.0"
   },
   "babel": {
     "presets": [
