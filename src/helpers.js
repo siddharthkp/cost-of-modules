@@ -249,6 +249,10 @@ const teardown = () => {
   }
 }
 
+let getParsedArguments = () => {
+  return argv;
+}
+
 module.exports = {
   setup,
   getSizeForNodeModules,
@@ -257,4 +261,5 @@ module.exports = {
   getAllDependencies,
   displayResults,
   teardown,
+  getParsedArguments
 }
