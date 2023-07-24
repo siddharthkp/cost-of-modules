@@ -12,7 +12,7 @@ const path = require('path')
 */
 let productionModifier = '--production'
 
-let setup = includeDev => {
+let setup = (includeDev) => {
   console.log()
 
   if (argv.includeDev || includeDev) productionModifier = ''
@@ -80,14 +80,14 @@ let getRootDependencies = () => {
 
 /* to fix the missing du problem on windows */
 
-let dirSize = root => {
+let dirSize = (root) => {
   let out = 0
   let getDirSizeRecursively
-  ;(getDirSizeRecursively = rootLocal => {
+  ;(getDirSizeRecursively = (rootLocal) => {
     let itemStats = fs.lstatSync(rootLocal)
     if (itemStats.isDirectory()) {
       let allSubs = fs.readdirSync(rootLocal)
-      allSubs.forEach(file => {
+      allSubs.forEach((file) => {
         getDirSizeRecursively(path.join(rootLocal, file))
       })
     } else {
@@ -100,10 +100,10 @@ let dirSize = root => {
 /*
     Get scoped modules
 */
-let getScopedModules = scope => {
+let getScopedModules = (scope) => {
   let modules = {}
   let allScopes = fs.readdirSync(path.join('node_modules', scope))
-  allScopes.forEach(name => {
+  allScopes.forEach((name) => {
     let itemStats = fs.lstatSync(path.join('node_modules', scope, name))
     if (itemStats.isDirectory()) {
       let size = dirSize(path.join('node_modules', scope, name))
@@ -118,7 +118,7 @@ let getScopedModules = scope => {
 let getSizeForNodeModules = () => {
   let modules = {}
   let allModules = fs.readdirSync('node_modules')
-  allModules.forEach(name => {
+  allModules.forEach((name) => {
     let itemStats = fs.lstatSync(path.join('node_modules', name))
     if (itemStats.isDirectory()) {
       if (name && name[0] === '@') {
@@ -160,7 +160,7 @@ let getDependenciesRecursively = (modules = [], tree) => {
         children: [a, b, c, d]
     }]
 */
-let attachNestedDependencies = rootDependencies => {
+let attachNestedDependencies = (rootDependencies) => {
   let flatDependencies = []
   let dependencyTree = getDependencyTree()
   for (let i = 0; i < rootDependencies.length; i++) {
@@ -180,7 +180,7 @@ let attachNestedDependencies = rootDependencies => {
     Root dependencies +  all their children
     Deduplicate
 */
-let getAllDependencies = flatDependencies => {
+let getAllDependencies = (flatDependencies) => {
   let allDependencies = []
   for (let i = 0; i < flatDependencies.length; i++) {
     let dep = flatDependencies[i]
@@ -250,7 +250,7 @@ const teardown = () => {
 }
 
 let getParsedArguments = () => {
-  return argv;
+  return argv
 }
 
 module.exports = {
@@ -261,5 +261,5 @@ module.exports = {
   getAllDependencies,
   displayResults,
   teardown,
-  getParsedArguments
+  getParsedArguments,
 }
